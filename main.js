@@ -1,5 +1,11 @@
 import App from './App'
 
+import BASE_URL from 'utils/api.js'
+Vue.prototype.$BASE_URL = BASE_URL
+
+import natpoint from 'utils/natpoint.js'
+Vue.prototype.$natpoint = natpoint
+
 // #ifndef VUE3
 import Vue from 'vue'
 import uView from '@/uni_modules/uview-ui'

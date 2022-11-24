@@ -49,7 +49,7 @@
 				//console.log(id)
 				this.$natpoint.memberObj.nat_test=id;
 				this.$natpoint.memberObj.nat_testname=name;
-				uni.navigateTo({
+				uni.redirectTo({
 					url:'/pages/Scancode/result'
 				})
 			},

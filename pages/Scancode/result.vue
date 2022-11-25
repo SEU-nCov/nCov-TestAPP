@@ -64,6 +64,7 @@
 					})
 				} else {
 					let that = this;
+					var num=this.number;
 					uni.request({
 					    url: that.$BASE_URL.BASE_URL+'/natResultInput',
 					    method: 'POST',
@@ -71,7 +72,7 @@
 							'Content-Type': 'application/json',
 						},
 						data:{
-							'tube_id':this.number,
+							'tube_id':num,
 							'nat_peopleid':this.$natpoint.memberObj.nat_test,
 							'nat_result':this.value,
 						},
@@ -84,6 +85,28 @@
 								that.number="请扫管录入";
 								that.value='';
 								that.value_last='';
+								uni.request({
+									url: that.$BASE_URL.BASE_URL+'/addnatResultMessage',
+									method: 'POST',
+									header:{
+										'Content-Type': 'application/json',
+									},
+									data:{
+										'tube_id':num,
+									},
+									 success: res => {}
+								});
+								uni.request({
+									url: that.$BASE_URL.BASE_URL+'/sendnatResultSMS',
+									method: 'POST',
+									header:{
+										'Content-Type': 'application/json',
+									},
+									data:{
+										'tube_id':num,
+									},
+									 success: res => {}
+								});
 							} else {
 								uni.showToast({
 									icon:"none",
